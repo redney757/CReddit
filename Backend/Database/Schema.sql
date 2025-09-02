@@ -12,8 +12,9 @@ CREATE TABLE users (
   first_name text NOT NULL,
   last_name text NOT NULL,
   username text UNIQUE NOT NULL, -- username has to be unique
+  email text  UNIQUE NOT NULL,
   password text NOT NULL,
-  created_at date NOT NULL
+  created_at date NOT NULL DEFAULT CURRENT_DATE
 );
 
 -- Create the forums table
@@ -50,7 +51,7 @@ CREATE TABLE user_messages (
   recipient_id integer REFERENCES users(id) ON DELETE SET NULL,
   subject text,
   body text NOT NULL,
-  sent_at date NOT NULL,
+  sent_at date NOT NULL
 );
 
 -- Create repair solutions table
@@ -59,5 +60,5 @@ CREATE TABLE repair_solutions (
   category text NOT NULL,
   part text NOT NULL,
   repair_solution text NOT NULL,
-  estimated_cost integer NOT NULL,
+  estimated_cost integer NOT NULL
 );
