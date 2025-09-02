@@ -23,10 +23,17 @@ const AuthProvider = ({ children }) => {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("user", JSON.stringify(response.data.verifiedUser.username));
             if (response.status === 200) {
-            navigate("/");
-        }
+                navigate("/");
+            }
         }catch(e) {
-            alert(e.response);
+            if (e.response && e.response.status === 401) {
+                alert(e.response.data);
+            }
+            else if (e.response && e.response.status === 400) {
+                alert(e.response.data);
+            } else {
+                console.log(e);
+            }
         }
     }
     const registerNewUser = async (newUser) => {
