@@ -4,7 +4,7 @@ const app = express();
 export default app;
 import loginRouter from '../Backend/api/login.js'
 import registerRouter from '../Backend/api/register.js'
-
+import foraRouter from './api/fora.js'
 // Allow all CORS requests -- had issues getting backend and front end to take and send requests
 app.use(cors());
 
@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/login", loginRouter)
 app.use("/register", registerRouter)
+app.use("/fora", foraRouter)
 
 app.use((err, req, res, next) => {
   switch (err.code) {

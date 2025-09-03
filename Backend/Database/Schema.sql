@@ -33,7 +33,7 @@ CREATE TABLE forum_messages (
   parent_id integer REFERENCES forum_messages(id) ON DELETE CASCADE, -- associates the forum reply with the forum message
   author_id integer REFERENCES users(id) ON DELETE SET NULL, -- associates the forum message with a user
   body text NOT NULL,
-  created_at date NOT NULL
+  created_at date NOT NULL DEFAULT CURRENT_DATE
 );
 
 -- Create the forum likes table
