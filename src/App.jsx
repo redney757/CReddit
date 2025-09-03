@@ -9,6 +9,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../Context/Context.jsx';
 import HomeMainContent from '../Components/HomeMainContent.jsx'
 import Account from '../Pages/Account.jsx'
+import Create from '../Pages/Create.jsx'
 function App() {
   const { token } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
@@ -30,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeMainContent />} />
         <Route path="/account" element={<Account/>} />
-        
+        <Route path="/create" element={<Create/>}/>
       </Routes>
        </>
           ) : (

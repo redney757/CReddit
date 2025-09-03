@@ -22,7 +22,7 @@ CREATE TABLE forums (
   id serial PRIMARY KEY,
   subject text NOT NULL,
   body text NOT NULL,
-  created_at date NOT NULL,
+  created_at date NOT NULL DEFAULT CURRENT_DATE,
   created_by integer REFERENCES users(id) ON DELETE SET NULL --References the user it was created by and if the user deletes their account the message stays but the sent by switches to null
 );
 

@@ -7,10 +7,10 @@ import { useContext } from 'react'
 import { AuthContext } from '../Context/Context.jsx';
 import '../src/Home.css'
 import axios from 'axios'
-function HomeMainContent(id, subject, body, createdAt, createdBy) {
-    const [fora, setFora] = useState([]
-
-    )
+function HomeMainContent() {
+  const navigate = useNavigate()
+  const [searchTerm, setSearchTerm] = useState('')
+  const [fora, setFora] = useState([])
 
         useEffect(()=> {
             const getFora = async() => {
@@ -18,19 +18,30 @@ function HomeMainContent(id, subject, body, createdAt, createdBy) {
                 setFora(response.data)
             }
             getFora()
-        },[])
-        
-        
+        },[fora])
+  const filteredFora = fora.filter(forum => forum.subject.toLowerCase().includes(searchTerm.toLowerCase()) || 
+  forum.body.toLowerCase().includes(searchTerm.toLowerCase())
+)
+    
 
             
     
   return (
     <div id='homeMainContent'>
-        <input type='text' id='forumSearch' onKeyUp={""} placeholder='Search..' title='Search for a forum'/>
+      <div id='forumSearchDiv'>
+                <button id='createForum' type='submit' onClick={(e)=>{
+                  e.preventDefault()
+                  navigate("/create")
+                }}>Create</button>
+                <input type='text' value={searchTerm} id='forumSearch' onChange={(e)=> {
+                  setSearchTerm(e.target.value)
+                }} placeholder='Search..' title='Search for a forum'/>
+
+      </div>
         <div id='forumGrid'>
-              {fora.map(forum=><div key={forum.id}>
-                <h1>{forum.subject}</h1>
-                <h1>{forum.body}</h1>
+              {filteredFora.map(forum=><div className='forumItem' key={forum.id}>
+                <h4>{forum.subject}</h4>
+                <p>{forum.body}</p>
 
 
 

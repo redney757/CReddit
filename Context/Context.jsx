@@ -19,10 +19,34 @@ const AuthProvider = ({ children }) => {
             })
             console.log(response);
             setToken(response.data.token);
-            setUser(response.data.verifiedUser);
+            setUser(response.data.minimalInfo);
             localStorage.setItem("token", response.data.token);
-            localStorage.setItem("user", JSON.stringify(response.data.verifiedUser.username));
+            localStorage.setItem("user", JSON.stringify(response.data.minimalInfo));
             if (response.status === 200) {
+                navigate("/");
+            }
+        }catch(e) {
+            if (e.response && e.response.status === 401) {
+                alert(e.response.data);
+            }
+            else if (e.response && e.response.status === 400) {
+                alert(e.response.data);
+            } else {
+                console.log(e);
+            }
+        }
+    }
+    const createForum = async (forum)=> {
+        try {
+
+            const response = await axios.post("http://localhost:8080/fora/forum/create", forum, {
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            })
+            console.log(response);
+            
+            if (response.status === 201) {
                 navigate("/");
             }
         }catch(e) {
@@ -60,7 +84,7 @@ const AuthProvider = ({ children }) => {
     }
 }
     return (
-        <AuthContext.Provider value={{ user, token, loginExistingUser, registerNewUser, setUser, apiMessage }}>
+        <AuthContext.Provider value={{ user, token, loginExistingUser, registerNewUser, createForum, setUser,  apiMessage }}>
             {children}
         </AuthContext.Provider>
     )
