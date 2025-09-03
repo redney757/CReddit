@@ -46,9 +46,17 @@ const AuthProvider = ({ children }) => {
         });
         if (response.status === 201) {
             navigate("/login");
-        }
+        } 
+        
     } catch (e) {
-        alert(e.response);
+        if (e.response && e.response.status === 401) {
+                alert(e.response.data);
+            }
+            else if (e.response && e.response.status === 400) {
+                alert(e.response.data);
+            } else {
+                console.log(e);
+            }
     }
 }
     return (

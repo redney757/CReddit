@@ -1,0 +1,35 @@
+
+#logo {
+ max-width: 300px;
+ max-height: 300px;
+ transform: rotate(90deg);
+ margin-bottom: -50px;
+ margin-top: -50px;
+}
+.input {
+  height: 25px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 285px;
+
+
+}
+#RegisterBlock {
+    width: 100vw;
+}
+h1 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+#submit {
+  height: 50px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+#form {
+min-width: 320px;
+}
+#loginLink {
+    color: white;
+}

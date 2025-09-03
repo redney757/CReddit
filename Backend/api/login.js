@@ -17,7 +17,7 @@ router.route("/").post(async (req, res, next) => {
                 if (!verifiedUser) {
                     return res.status(401).send("Username or password is incorrect")
                 }
-            const token = jwt.sign({id:verifiedUser.id}, secret) 
+            const token = jwt.sign({id:verifiedUser.id}, secret, {expiresIn: 3600}) 
         
              return res.status(200).send({token, verifiedUser})
 

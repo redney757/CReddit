@@ -1,20 +1,44 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Register from '../register/Register.jsx'
 import Login from '../login/Login.jsx'
 import { Route, Routes } from 'react-router'
-import Home from '../Pages/Home.jsx'
+import HomeNavigation from '../Components/HomeNavigation.jsx'
+import { useNavigate } from 'react-router'
+import { useContext } from 'react'
+import { AuthContext } from '../Context/Context.jsx';
+import HomeMainContent from '../Components/HomeMainContent.jsx'
+import Account from '../Pages/Account.jsx'
 function App() {
-  const [token, setToken] = useState(null)
+  const { token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!token || !user) {
+      if (location.pathname !== "/login" && location.pathname !== "/register") {
+      navigate("/login", { replace: true });
+    }
+  }
+}, [token, user, navigate, location.pathname]);
 
   return (
     <>
+    {token && user ? (
+      <>
+    <HomeNavigation/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomeMainContent />} />
+        <Route path="/account" element={<Account/>} />
+        
+      </Routes>
+       </>
+          ) : (
+      <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+        )}
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../src/App.css'
+import '../src/Register.css'
 import mainLogo from '../src/assets/CReddit_Logo.png'
 import { AuthContext } from '../Context/Context.jsx';
 import { useContext } from 'react';
@@ -19,20 +19,20 @@ function Register() {
     }
 
   return (
-    <>
-    <img src={mainLogo} alt="Logo" id='img'/>
+    <div id='RegisterBlock'>
+    <img src={mainLogo} alt="Logo" id='logo'/>
     <form id='form' action={handleRegistration}>
         <h1>Register</h1>
-        <div><input className='input' type='text' placeholder='First Name' name='firstName' /></div>
-        <div><input className='input' type='text' placeholder='Last Name' name='lastName' /></div>
-        <div><input className='input' type='text' placeholder='Username' name='username' /></div>
-        <div><input className='input' type='email' placeholder='Email' name='email' /></div>
-        <div><input className='input' type='password' placeholder='Password' name='password' /></div>
+        <div><input className='input' type='text' placeholder='First Name' name='firstName' required /></div>
+        <div><input className='input' type='text' placeholder='Last Name' name='lastName' required /></div>
+        <div><input className='input' type='text' placeholder='Username' name='username' required /></div>
+        <div><input className='input' type='email' placeholder='Email' name='email' required /></div>
+        <div><input className='input' type='password' placeholder='Password' name='password' required /></div>
         <button id='submit' type='submit'>Register</button>
-        <div><a href='/login'>Already have an account? Login</a></div>
+        <div><a id='loginLink' href='/login'>Already have an account? Login</a></div>
     </form>
     
-    </>
+    </div>
   )
 }
 
