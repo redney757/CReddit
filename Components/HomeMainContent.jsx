@@ -9,6 +9,7 @@ import '../src/Home.css'
 import axios from 'axios'
 function HomeMainContent() {
   const navigate = useNavigate()
+  const [selected, setSelected] = useState()
   const [searchTerm, setSearchTerm] = useState('')
   const [fora, setFora] = useState([])
 
@@ -27,27 +28,34 @@ function HomeMainContent() {
             
     
   return (
-    <div id='homeMainContent'>
-      <div id='forumSearchDiv'>
-                <button id='createForum' type='submit' onClick={(e)=>{
-                  e.preventDefault()
-                  navigate("/create")
-                }}>Create</button>
-                <input type='text' value={searchTerm} id='forumSearch' onChange={(e)=> {
-                  setSearchTerm(e.target.value)
-                }} placeholder='Search..' title='Search for a forum'/>
+    
+        <div id='homeMainContent'>
+              <div id='forumSearchDiv'>
+                        <button id='createForum' type='submit' onClick={(e)=>{
+                          e.preventDefault()
+                          navigate("/create")
+                        }}>Create</button>
+                        <input type='text' value={searchTerm} id='forumSearch' onChange={(e)=> {
+                          setSearchTerm(e.target.value)
+                        }} placeholder='Search..' title='Search for a forum'/>
 
-      </div>
-        <div id='forumGrid'>
-              {filteredFora.map(forum=><div className='forumItem' key={forum.id}>
-                <h4>{forum.subject}</h4>
-                <p>{forum.body}</p>
+              </div>
+                <div id='forumGrid'>
+                      {filteredFora.map(forum=><div onClick={()=>{setSelected(forum)
+
+                        navigate(`/forum/${forum.id}`)
+                      
+                      }} className='forumItem' key={forum.id}>
+                        <h4>{forum.subject}</h4>
+                        <p>{forum.body}</p>
 
 
 
-              </div>)}
-        </div>
-    </div>
+                      </div>)}
+                </div>
+            </div>
+
+       
   )
 }
 

@@ -13,6 +13,7 @@ import axios from 'axios'
 function Create() {
 
      const { createForum, user } = useContext(AuthContext);
+     
     const handleForumCreation = async (formData) => {
         
         const forum = {

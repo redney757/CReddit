@@ -15,7 +15,14 @@ export async function createForum({subject, body, id}) {
     ($1, $2, $3)
     RETURNING *
     `;
-    const response = await client.query(SQL, [subject, body, id])
-    return response.rows[0]
+    const {rows} = await client.query(SQL, [subject, body, id])
+    return rows[0]
 
+}
+export async function getForum(id) {
+    const SQL = `SELECT * from forums
+    WHERE id = $1
+    `
+    const response = await client.query(SQL, [id])
+    return response.rows[0]
 }

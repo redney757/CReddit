@@ -94,11 +94,14 @@ nav {
   margin: 10px;
 
   }
-#createForum {
 
-  
-  
-}
 .createInput {
   max-width: 400px;
+}
+#singleForumDiv {
+  width: 100vw;
+  min-width: 725px;
+  background-color: rgba(61, 61, 61, 0.295);
+  border-radius: 15px;
+  margin: 10px;
 }

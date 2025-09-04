@@ -14,15 +14,12 @@ export async function getUserByUsernameOrEmail({usernameOrEmail, password}) {
     return verified ? user : null
 }
 
-export async function getUserById(id) {
+export async function getUserById({id}) {
     const SQL = `
         SELECT * from users
         WHERE id = $1
     `;
-    const {rows} = await client.query(SQL, [id])
-    const user = rows[0]
-    if (!user){
-        return null
-    } 
-    return user
+    const response = await client.query(SQL, [id])
+    
+    return response.rows[0]
 }

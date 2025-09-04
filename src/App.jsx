@@ -10,6 +10,7 @@ import { AuthContext } from '../Context/Context.jsx';
 import HomeMainContent from '../Components/HomeMainContent.jsx'
 import Account from '../Pages/Account.jsx'
 import Create from '../Pages/Create.jsx'
+import SingleForum from '../Pages/SingleForum.jsx'
 function App() {
   const { token } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" element={<HomeMainContent />} />
         <Route path="/account" element={<Account/>} />
         <Route path="/create" element={<Create/>}/>
+        <Route path="/forum/:id" element={<SingleForum/>}/>
       </Routes>
        </>
           ) : (
