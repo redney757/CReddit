@@ -17,6 +17,8 @@ function HomeMainContent() {
             const getFora = async() => {
                 const response = await axios.get("http://localhost:8080/fora")
                 setFora(response.data)
+                console.log(response.data)
+                
             }
             getFora()
         },[fora])
@@ -34,11 +36,12 @@ function HomeMainContent() {
                         <button id='createForum' type='submit' onClick={(e)=>{
                           e.preventDefault()
                           navigate("/create")
-                        }}>Create</button>
+                        }}>+</button>
+                        <div id='centerSearch'>
                         <input type='text' value={searchTerm} id='forumSearch' onChange={(e)=> {
                           setSearchTerm(e.target.value)
                         }} placeholder='Search..' title='Search for a forum'/>
-
+                  </div>
               </div>
                 <div id='forumGrid'>
                       {filteredFora.map(forum=><div onClick={()=>{setSelected(forum)
@@ -46,7 +49,8 @@ function HomeMainContent() {
                         navigate(`/forum/${forum.id}`)
                       
                       }} className='forumItem' key={forum.id}>
-                        <h4>{forum.subject}</h4>
+                        <h3>cr/{forum.subject}</h3>
+                        <p>{forum.author_username}</p>
                         <p>{forum.body}</p>
 
 

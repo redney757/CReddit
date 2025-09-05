@@ -10,7 +10,7 @@ const secret = process.env.SECRET
 router.route("/").get(async (req, res, next) => {
     try {
        const forums = await getFora()
-
+        
        return res.send(forums)
         
     }catch(e) {

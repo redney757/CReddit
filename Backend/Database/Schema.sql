@@ -14,7 +14,7 @@ CREATE TABLE users (
   username text UNIQUE NOT NULL, -- username has to be unique
   email text  UNIQUE NOT NULL,
   password text NOT NULL,
-  created_at date NOT NULL DEFAULT CURRENT_DATE
+  created_at timestamptz NOT NULL DEFAULT now()
 );
 
 -- Create the forums table
@@ -22,7 +22,7 @@ CREATE TABLE forums (
   id serial PRIMARY KEY,
   subject text NOT NULL,
   body text NOT NULL,
-  created_at date NOT NULL DEFAULT CURRENT_DATE,
+  created_at timestamptz NOT NULL DEFAULT now(),
   created_by integer REFERENCES users(id) ON DELETE SET NULL --References the user it was created by and if the user deletes their account the message stays but the sent by switches to null
 );
 
@@ -33,14 +33,14 @@ CREATE TABLE forum_messages (
   parent_id integer REFERENCES forum_messages(id) ON DELETE CASCADE, -- associates the forum reply with the forum message
   author_id integer REFERENCES users(id) ON DELETE SET NULL, -- associates the forum message with a user
   body text NOT NULL,
-  created_at date NOT NULL DEFAULT CURRENT_DATE
+  created_at timestamptz NOT NULL DEFAULT now()
 );
 
 -- Create the forum likes table
 CREATE TABLE forum_likes (
   user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE, -- associates the forum like with a user
   forum_id integer NOT NULL REFERENCES forums(id) ON DELETE CASCADE, -- associates the forum like with a forum
-  liked_at date NOT NULL,
+  liked_at timestamptz NOT NULL DEFAULT now(),
   UNIQUE (user_id, forum_id) -- ensures uniqueness (cannot like twice)
 );
 
@@ -51,7 +51,7 @@ CREATE TABLE user_messages (
   recipient_id integer REFERENCES users(id) ON DELETE SET NULL,
   subject text,
   body text NOT NULL,
-  sent_at date NOT NULL
+  sent_at timestamptz NOT NULL DEFAULT now()
 );
 
 -- Create repair solutions table

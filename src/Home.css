@@ -60,8 +60,14 @@ nav {
 }
 #forumSearchDiv {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px;
 }
+#centerSearch {
+  flex-grow: 1;
+}
+
 #navLogo {
   rotate: 90deg;
   max-width: 30px;
@@ -104,4 +110,13 @@ nav {
   background-color: rgba(61, 61, 61, 0.295);
   border-radius: 15px;
   margin: 10px;
+}
+#createForum {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-style: none;
+  font-size: 30px;
+  text-align: center;
+  line-height: 40px;
 }

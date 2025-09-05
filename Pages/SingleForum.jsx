@@ -18,6 +18,7 @@ function SingleForum() {
             const getFora = async() => {
                 const response = await axios.get(`http://localhost:8080/fora/forum/${forumId.id}`)
                 setForum(response.data)
+                console.log(response.data)
             }
             getFora()
         },[])
@@ -25,7 +26,8 @@ function SingleForum() {
     return (
             <div id='singleForumDiv'>
                 
-                    <h1>{forum.subject}</h1>
+                    <h1>cr/{forum.subject}</h1>
+                    <p>{forum.author_username}</p>
                     <p>{forum.body}</p>
                 
         </div>
