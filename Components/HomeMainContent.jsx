@@ -17,7 +17,6 @@ function HomeMainContent() {
             const getFora = async() => {
                 const response = await axios.get("http://localhost:8080/fora")
                 setFora(response.data)
-                console.log(response.data)
                 
             }
             getFora()

@@ -36,6 +36,28 @@ const AuthProvider = ({ children }) => {
             }
         }
     }
+    const commentReply = async (forumId, forumMessage) => {
+        try {
+
+        
+            const response  = await axios.post(`http://localhost:8080/fora/forum/${forumId}/messages`, forumMessage, {
+                headers:{
+                    "Content-Type": "application/json"
+                }
+
+            })
+            
+        }catch(e) {
+            if (e.response && e.response.status === 401) {
+                alert(e.response.data);
+            }
+            else if (e.response && e.response.status === 400) {
+                alert(e.response.data);
+            } else {
+                console.log(e);
+            }
+        }
+    }
     const createForum = async (forum)=> {
         try {
 
@@ -84,7 +106,7 @@ const AuthProvider = ({ children }) => {
     }
 }
     return (
-        <AuthContext.Provider value={{ user, token, loginExistingUser, registerNewUser, createForum, setUser,  apiMessage }}>
+        <AuthContext.Provider value={{ user, token, commentReply, loginExistingUser, registerNewUser, createForum, setUser,  apiMessage }}>
             {children}
         </AuthContext.Provider>
     )

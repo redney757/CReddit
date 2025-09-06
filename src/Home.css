@@ -110,6 +110,11 @@ nav {
   background-color: rgba(61, 61, 61, 0.295);
   border-radius: 15px;
   margin: 10px;
+  text-align: left;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 #createForum {
   width: 40px;
@@ -119,4 +124,35 @@ nav {
   font-size: 30px;
   text-align: center;
   line-height: 40px;
+}
+#commentReplyDiv {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 10px;
+}
+#inputCommentReplyForm {
+  display: flex;
+  justify-content: left;
+}
+#inputWrap {
+  flex-grow: 1;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+
+}
+#inputReply {
+  width: 40vw;
+}
+#commentReplyGrid {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+   max-height: calc(100vh - 300px);
+  overflow-y: auto;
+}
+#flexDivForMessage {
+  display: flex;
+ 
 }
