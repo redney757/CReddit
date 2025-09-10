@@ -11,6 +11,7 @@ import mainLogo from '../src/assets/CReddit_Logo.png'
 
 function HomeNavigation() {
 const {user} = useContext(AuthContext)
+ 
 
   return (
     <>
@@ -22,6 +23,7 @@ const {user} = useContext(AuthContext)
         
         <nav>
            <Link id='navLink' to="/account">My Account</Link>
+           <Link id='navLink' to={`/user/${user.id}/messages`}>Messages</Link>
            <Link id='navLink' to="/">Forums</Link>
            <Link id='navLink' to="/solutions">Solutions</Link>
         </nav>

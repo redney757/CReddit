@@ -11,6 +11,7 @@ import Account from '../Pages/Account.jsx'
 import Create from '../Pages/Create.jsx'
 import SingleForum from '../Pages/SingleForum.jsx'
 import Solutions from '../Pages/Solutions.jsx'
+import Messages from '../Pages/Messages.jsx'
 function App() {
   const { token } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
@@ -35,6 +36,7 @@ function App() {
         <Route path="/create" element={<Create/>}/>
         <Route path="/forum/:id" element={<SingleForum/>}/>
         <Route path="/solutions" element={<Solutions/>}/>
+        <Route path="/user/:id/messages" element={<Messages/>}/>
       </Routes>
        </>
           ) : (
