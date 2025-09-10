@@ -6,7 +6,7 @@ import { Link, Route, Routes } from 'react-router'
 import { useNavigate } from 'react-router'
 import { useContext } from 'react'
 import { AuthContext } from '../Context/Context.jsx';
-import '../src/Home.css'
+import '../src/Navigation.css'
 import mainLogo from '../src/assets/CReddit_Logo.png'
 
 function HomeNavigation() {
@@ -23,6 +23,7 @@ const {user} = useContext(AuthContext)
         <nav>
            <Link id='navLink' to="/account">My Account</Link>
            <Link id='navLink' to="/">Forums</Link>
+           <Link id='navLink' to="/solutions">Solutions</Link>
         </nav>
     </div>
     

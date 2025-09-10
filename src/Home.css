@@ -20,14 +20,18 @@ min-width: 275px;
 background-color: rgb(246, 51, 63);
 color: black;
 border-radius: 15px;
-margin: 10px;
+margin: 15px;
+box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #homeMainContent{
   width: 100vw;
   min-width: 725px;
-  background-color: rgba(61, 61, 61, 0.295);
+  background-color: rgba(85, 85, 85, 0);
   border-radius: 15px;
-  margin: 10px;
+  margin: 15px;
+
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 nav {
@@ -42,6 +46,8 @@ nav {
   border-radius: 8px;
   background-color: rgba(211, 211, 211, 0.856);
   transition: all ease-in-out 0.3s;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 #navLink:hover {
    background-color: black;
@@ -86,7 +92,6 @@ nav {
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
 
-  /* cap by viewport; tweak the subtraction to account for your header/search/margins */
   max-height: calc(100vh - 85px);
   overflow-y: auto;
 }
@@ -97,7 +102,8 @@ nav {
   min-width: 725px;
   background-color: rgba(61, 61, 61, 0.295);
   border-radius: 15px;
-  margin: 10px;
+  margin: 15px;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
 
   }
 
@@ -115,6 +121,9 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 15px;
+
 }
 #createForum {
   width: 40px;
@@ -129,7 +138,7 @@ nav {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 10px;
+  margin: 10px;max-height: 80%;
 }
 #inputCommentReplyForm {
   display: flex;
@@ -146,13 +155,36 @@ nav {
   width: 40vw;
 }
 #commentReplyGrid {
-  display: grid;
-  grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 12px;
-   max-height: calc(100vh - 300px);
+  display: block;
   overflow-y: auto;
+  
+  
+}
+#commentReplyGrid::-webkit-scrollbar {
+  display: none;
 }
 #flexDivForMessage {
   display: flex;
  
+}
+#AccountMainDiv {
+  width: 100vw;
+  min-width: 725px;
+  background-color: rgba(151, 151, 151, 0.295);
+  border-radius: 15px;
+  margin: 10px;
+
+  }
+#profilePicture {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgb(246, 51, 63);
+}
+#accountHeader {
+  
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }

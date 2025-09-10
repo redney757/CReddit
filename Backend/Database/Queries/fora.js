@@ -17,6 +17,25 @@ export async function getFora() {
     const {rows : forums } = await client.query(SQL)
     return forums
 }
+export async function getForaByCreator(id) {
+    const SQL = `
+        SELECT
+            f.id,
+            f.subject,
+            f.body,
+            f.created_at,
+            f.created_by,
+            u.id AS author_id
+        FROM forums AS f
+        LEFT JOIN users AS u
+        ON u.id = f.created_by
+        WHERE u.id = $1
+        ORDER BY f.created_at DESC;
+        
+    `;
+    const {rows : forums } = await client.query(SQL)
+    return forums
+}
 export async function createForum({subject, body, id}) {
     const SQL = `
     INSERT INTO forums
@@ -58,6 +77,7 @@ export async function getForumMessages(id) {
     LEFT JOIN users AS u
     ON u.id = f.author_id
         WHERE f.forum_id = $1
+        ORDER BY f.created_at ASC;
     `
     const {rows:response} = await client.query(SQL, [id])
     return response

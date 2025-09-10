@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import Register from '../register/Register.jsx'
 import Login from '../login/Login.jsx'
 import { Route, Routes } from 'react-router'
@@ -11,6 +10,7 @@ import HomeMainContent from '../Components/HomeMainContent.jsx'
 import Account from '../Pages/Account.jsx'
 import Create from '../Pages/Create.jsx'
 import SingleForum from '../Pages/SingleForum.jsx'
+import Solutions from '../Pages/Solutions.jsx'
 function App() {
   const { token } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
@@ -34,6 +34,7 @@ function App() {
         <Route path="/account" element={<Account/>} />
         <Route path="/create" element={<Create/>}/>
         <Route path="/forum/:id" element={<SingleForum/>}/>
+        <Route path="/solutions" element={<Solutions/>}/>
       </Routes>
        </>
           ) : (

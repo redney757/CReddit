@@ -23,7 +23,8 @@ router.route("/").post(async (req, res, next) => {
                 firstName : verifiedUser.first_name,
                 lastName : verifiedUser.last_name,
                 username : verifiedUser.username,
-                email : verifiedUser.email
+                email : verifiedUser.email,
+                created_at : verifiedUser.created_at
             }
         
              return res.status(200).send({token, minimalInfo})
