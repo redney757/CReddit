@@ -154,9 +154,7 @@ function SingleForum() {
                             {thread.map(rootMessage => displayMessageObjects(rootMessage))}
                             
                         </div>
-
-                    </div>
-                    <form id='inputCommentReplyForm' action={handleCommentReply}>
+ <form id='inputCommentReplyForm' action={handleCommentReply}>
                        
                         <button id='submitCommentReply'type="submit" onClick={()=> {
                            
@@ -172,6 +170,8 @@ function SingleForum() {
                         </div>
                         
                     </form>
+                    </div>
+                   
                     
                 
         </div>

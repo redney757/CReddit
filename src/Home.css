@@ -111,18 +111,13 @@ nav {
   max-width: 400px;
 }
 #singleForumDiv {
-  width: 100vw;
+   width: 100vw;
   min-width: 725px;
-  background-color: rgba(61, 61, 61, 0.295);
+  background-color: rgba(85, 85, 85, 0);
   border-radius: 15px;
-  margin: 10px;
-  text-align: left;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 15px;
+text-align: left;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 #createForum {
@@ -137,7 +132,6 @@ nav {
 #commentReplyDiv {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   margin: 10px;max-height: 80%;
 }
 #inputCommentReplyForm {
