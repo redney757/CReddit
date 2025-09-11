@@ -13,16 +13,7 @@ body {
   width: auto;
   display: flex;
 }
-#homeNav {
-width: 100vw;
-max-width: 375px;
-min-width: 275px;
-background-color: rgb(246, 51, 63);
-color: black;
-border-radius: 15px;
-margin: 15px;
-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 #homeMainContent{
   width: 100vw;
   min-width: 725px;
@@ -34,28 +25,6 @@ box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
-nav {
-  display: flex;
-  flex-direction: column;
-}
-#navLink{
-  padding: 15px;
-  margin: 20px;
-  text-decoration: none;
-  color: black;
-  border-radius: 8px;
-  background-color: rgba(211, 211, 211, 0.856);
-  transition: all ease-in-out 0.3s;
-  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-#navLink:hover {
-   background-color: black;
-   color: white;
-   transform: scale(0.95);
-  
-
-}
 
 #forumSearch {
   width: 40%;
@@ -74,18 +43,6 @@ nav {
   flex-grow: 1;
 }
 
-#navLogo {
-  rotate: 90deg;
-  max-width: 30px;
-}
-#navImageDiv {
-  background-color: rgb(0, 0, 0);
-  text-align: center;
-  border-top-right-radius: 14px;
-  border-top-left-radius: 14px;
-
-
-}
 
 #forumGrid {
   display: grid;
@@ -107,19 +64,7 @@ nav {
 
   }
 
-.createInput {
-  max-width: 400px;
-}
-#singleForumDiv {
-   width: 100vw;
-  min-width: 725px;
-  background-color: rgba(85, 85, 85, 0);
-  border-radius: 15px;
-  margin: 15px;
-text-align: left;
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
 
-}
 #createForum {
   width: 40px;
   height: 40px;
@@ -129,38 +74,7 @@ text-align: left;
   text-align: center;
   line-height: 40px;
 }
-#commentReplyDiv {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;max-height: 80%;
-}
-#inputCommentReplyForm {
-  display: flex;
-  justify-content: left;
-}
-#inputWrap {
-  flex-grow: 1;
-  align-items: center;
-  align-content: center;
-  text-align: center;
 
-}
-#inputReply {
-  width: 40vw;
-}
-#commentReplyGrid {
-  display: block;
-  overflow-y: auto;
-  
-  
-}
-#commentReplyGrid::-webkit-scrollbar {
-  display: none;
-}
-#flexDivForMessage {
-  display: flex;
- 
-}
 #AccountMainDiv {
   width: 100vw;
   min-width: 725px;
@@ -181,14 +95,4 @@ text-align: left;
   display: flex;
   justify-content: left;
   align-items: center;
-}
-#messagesMainContent{
-  width: 100vw;
-  min-width: 725px;
-  background-color: rgba(85, 85, 85, 0);
-  border-radius: 15px;
-  margin: 15px;
-
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-
 }

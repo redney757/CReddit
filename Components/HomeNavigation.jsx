@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import '../src/App.css'
 import Register from '../register/Register.jsx'
 import Login from '../login/Login.jsx'
 import { Link, Route, Routes } from 'react-router'

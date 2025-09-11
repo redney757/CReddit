@@ -8,7 +8,7 @@ import { AuthContext } from '../Context/Context.jsx';
 import '../src/Home.css'
 import axios from 'axios'
 import { useParams } from 'react-router'
-
+import '../src/SingleForum.css'
 function SingleForum() {
     const [forum, setForum] = useState([])
     const [messages, setMessages] = useState([])
@@ -121,7 +121,7 @@ function SingleForum() {
                             {object.body}
 
                         </p>
-                        <button onClick={()=> {
+                        <button id='replyToButton' onClick={()=> {
                                          setReplyMessage(true)
                                          setParentMessageID(object.id)
                                          setReplyToUser(object.author_username)
@@ -139,40 +139,42 @@ function SingleForum() {
         }
     return (
             <div id='singleForumDiv'>
-                
-                    <h1>cr/{forum.subject}</h1>
-                    <p>{forum.author_username}</p>
-                    <p>{forum.body}</p>
-                    <button id='comment' onClick={(e)=> {
-                        e.preventDefault()
-                        document.getElementById('inputReply').focus()
-                       
-                    }}>comment</button>
-
+                    <header id='forumHeader'>
+                        <h1 id='forumSubject'>cr/{forum.subject}</h1>
+                        <p id='forumAuthor'>{forum.author_username}</p>
+                        <p id='forumBody'>{forum.body}</p>
+                        <button id='comment' onClick={(e)=> {
+                        
+                            e.preventDefault()
+                            document.getElementById('inputReply').focus()
+                        
+                        }}>comment</button>
+                    </header>
                     <div id='commentReplyDiv'>
                         <div id='commentReplyGrid'>
                             {thread.map(rootMessage => displayMessageObjects(rootMessage))}
                             
                         </div>
- <form id='inputCommentReplyForm' action={handleCommentReply}>
+                    
+                    </div> 
+                    {
+                            replyMessage ? <p>Replying to message ID: {replyToUser}</p> : null
+                        }
+                    <div id='formDiv'>
+                   <form id='inputCommentReplyForm' action={handleCommentReply}>
                        
                         <button id='submitCommentReply'type="submit" onClick={()=> {
                            
                         }}>Submit</button> 
                        
                         <div id='inputWrap'>
-                            <div id='replyMessageInfo'> 
-                                {
-                            replyMessage ? <p>Replying to message ID: {replyToUser}</p> : null
-                        }
+                            
+                               
                             <input id='inputReply' type='text' placeholder='Message...' name='messageBody' required></input>
-                            </div>
                         </div>
                         
                     </form>
                     </div>
-                   
-                    
                 
         </div>
   )

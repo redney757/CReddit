@@ -1,0 +1,46 @@
+#homeNav {
+width: 100vw;
+max-width: 375px;
+min-width: 275px;
+background-color: rgb(246, 51, 64);
+color: black;
+border-radius: 15px;
+margin: 15px;
+box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+}
+#navLink{
+  padding: 15px;
+  margin: 20px;
+  text-decoration: none;
+  color: black;
+  border-radius: 8px;
+  background-color: rgba(211, 211, 211, 0.856);
+  transition: all ease-in-out 0.3s;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+#navLink:hover {
+   background-color: black;
+   color: white;
+   transform: scale(0.95);
+  
+
+}
+#navLogo {
+  rotate: 90deg;
+  max-width: 30px;
+}
+#navImageDiv {
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  border-top-right-radius: 14px;
+  border-top-left-radius: 14px;
+
+
+}

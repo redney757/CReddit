@@ -1,0 +1,97 @@
+#singleForumDiv {
+  width: 100vw;
+  min-width: 725px;
+  background-color: rgba(85, 85, 85, 0);
+  border-radius: 15px;
+  margin: 15px;
+text-align: left;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+backdrop-filter: blur(0.5px);
+border: 1px solid rgba(255, 255, 255, 0.11);
+display: flex;
+flex-direction: column;
+padding: 10px;
+align-items: center;
+
+}
+#forumHeader {
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-style: solid;
+    padding: 10px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.11);
+    min-width: 600px;
+    width: 70%;
+    display: fle;
+}
+hr {
+    margin: 0;
+    width: 70%;
+    margin: 10px;
+}
+#commentReplyDiv {
+    width: 70%;
+    overflow-y: scroll;
+    border-style: solid;
+    padding: 10px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.11);
+    min-width: 600px;
+    margin: 5px
+    
+}
+#commentReplyGrid {
+    padding: 10px;
+    
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+#formDiv {
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    border-style: solid;
+    padding: 10px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.11);
+    min-width: 600px;
+    width: 70%;
+
+
+}
+form {
+    display: flex;
+}
+#inputWrap {
+    flex-grow: 1;
+    padding-left: 20px;
+    align-content: center;
+}
+input {
+    width: 100%;
+    height: 30px;
+    border-radius: 8px;
+    border-style: none;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-right: 10px;
+    
+}
+#submitCommentReply {
+
+ height: 38px;
+ min-width: 75px;
+ max-width: 110px;
+ width: 10%;
+ transition: all ease-in-out 0.1s;
+}
+#submitCommentReply:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+    border-radius: 14px;
+    border: none;
+background-color: rgb(246, 51, 64);
+}
