@@ -5,14 +5,14 @@ import { Route, Routes } from 'react-router'
 import { useNavigate } from 'react-router'
 import { useContext } from 'react'
 import { AuthContext } from '../Context/Context.jsx';
-import '../src/Home.css'
 import axios from 'axios'
+import Create from '../Pages/Create.jsx'
 function HomeMainContent() {
   const navigate = useNavigate()
   const [selected, setSelected] = useState()
   const [searchTerm, setSearchTerm] = useState('')
   const [fora, setFora] = useState([])
-
+  const {isCreating, setIsCreating} = useState(false)
         useEffect(()=> {
             const getFora = async() => {
                 const response = await axios.get("http://localhost:8080/fora")
@@ -29,12 +29,18 @@ function HomeMainContent() {
             
     
   return (
-    
+        
         <div id='homeMainContent'>
+          <Create/>
               <div id='forumSearchDiv'>
-                        <button id='createForum' type='submit' onClick={(e)=>{
+                        <button id='createForumButton' type='submit' onClick={(e)=>{
                           e.preventDefault()
-                          navigate("/create")
+                          
+                          const createElement = document.querySelector('.createMainDiv')
+                          if(createElement) {
+                            createElement.classList.add('show')
+                          
+                        }
                         }}>+</button>
                         <div id='centerSearch'>
                         <input type='text' value={searchTerm} id='forumSearch' onChange={(e)=> {

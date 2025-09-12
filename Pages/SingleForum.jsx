@@ -108,7 +108,27 @@ function SingleForum() {
             }
             getFora()
             getForumMessages()
+            
         },[ replyMessage, forum])
+        function calculatePostTime(dateString) {
+            const dateNow = new Date()
+            const datePast = new Date(dateString)
+            const calcDifference = Math.floor((dateNow - datePast) / 1000)
+            if (calcDifference < 60) {
+                return "just now"
+            } else if (calcDifference < 3600) {
+                return Math.floor(calcDifference / 60) + " min ago"
+            } else if (calcDifference < 86400) {
+                return Math.floor(calcDifference / 3600) + " hr ago"
+            } else if (calcDifference >= 86400) {
+                return Math.floor(calcDifference / 86400) + " d ago"
+            } else if (calcDifference >= 2592000) {
+                return Math.floor(calcDifference / 2592000) + " mo ago"
+            } else if (calcDifference >= 31536000) {
+                return Math.floor(calcDifference / 31536000) + " yr ago"
+            }
+            return dateString
+        }
         function displayMessageObjects(object, depth = 0) {
             return (
                 <div key={object.id} style={{marginBottom : 12, marginLeft: depth ? 16 : 0, borderLeft: depth ? '1px solid #ddd' : 'none', paddingLeft: depth ? 12 : 0}}>
@@ -125,6 +145,8 @@ function SingleForum() {
                                          setReplyMessage(true)
                                          setParentMessageID(object.id)
                                          setReplyToUser(object.author_username)
+                                        document.getElementById('inputReply').focus()
+
                                          
                         }}>reply</button>
                     </div>
@@ -140,26 +162,55 @@ function SingleForum() {
     return (
             <div id='singleForumDiv'>
                     <header id='forumHeader'>
-                        <h1 id='forumSubject'>cr/{forum.subject}</h1>
-                        <p id='forumAuthor'>{forum.author_username}</p>
+                        <div>
+                            <div id='infoWrapper'>
+                            <h3 id='forumSubject'><p id='subjectPrefix'>cr/</p>{forum.subject}</h3>
+                         <ul id='forumInfoList'>
+                             <li id='postTime'>{calculatePostTime(forum.created_at)}</li>
+                            </ul>
+                        </div>
+                             <h6 id='forumAuthor'><p id='authorPrefix'>u/</p>{forum.author_username} </h6>
+                            
+                       
                         <p id='forumBody'>{forum.body}</p>
+                        </div>
+                        <div id='commentButtonWrapper'>
                         <button id='comment' onClick={(e)=> {
                         
                             e.preventDefault()
                             document.getElementById('inputReply').focus()
                         
                         }}>comment</button>
+                        </div>
                     </header>
                     <div id='commentReplyDiv'>
                         <div id='commentReplyGrid'>
-                            {thread.map(rootMessage => displayMessageObjects(rootMessage))}
+                            <>
+                            {
+                                
+                                thread.length <=0 ?
+                                    <h3 id='beFirst'>Be the first to reply to this forum!</h3>
+                                :
+                            thread.map(rootMessage => displayMessageObjects(rootMessage))
+
+                            }
                             
+                            </>
                         </div>
                     
-                    </div> 
-                    {
-                            replyMessage ? <p>Replying to message ID: {replyToUser}</p> : null
-                        }
+                    </div>
+                    <div id='replyingToDiv'>
+                    <p className={`reply ${replyMessage ? 'show' : ''}`}>Replying to message ID: {replyToUser}</p>
+                    <button className={`cancel ${replyMessage ? 'show' : ''}`} type='button' onClick={()=>{
+                        setReplyMessage(false)
+                        setParentMessageID(null)
+                        setReplyToUser(null)
+                        const replyElement = document.getElementsByClassName('reply show')
+                        const cancelElement = document.getElementsByClassName('cancel show')
+                        Array.from(cancelElement).forEach(element => element.classList.remove("show"))
+                        Array.from(replyElement).forEach(element => element.classList.remove("show"))
+                    }}>cancel</button>
+                    </div>
                     <div id='formDiv'>
                    <form id='inputCommentReplyForm' action={handleCommentReply}>
                        

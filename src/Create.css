@@ -1,0 +1,80 @@
+.createMainDiv {
+opacity: 0;
+pointer-events: none;
+transition: all 0.3s ease-in-out;
+ position: absolute;
+    top: 0;
+    bottom: 0;
+    transform: scale(0.95);
+    left: 0;
+    right: 0;
+      align-items: center;
+min-width: 725px;
+  background-color: rgba(85, 85, 85, 0); 
+  border-radius: 15px;
+  text-align: left;
+  margin: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    
+}
+.createMainDiv.show {
+    justify-content: center;
+    opacity: 1;
+    pointer-events:all;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: scale(1);
+  min-width: 725px;
+  background-color: rgba(85, 85, 85, 0); 
+  border-radius: 15px;
+  text-align: left;
+  margin: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#createForum{
+    display: flex;
+    flex-direction: column;
+}
+.createInput {
+   resize: none;
+   field-sizing: content;
+   overflow: hidden;
+   width: 300px;
+   max-width: 300px;
+   max-height: 100px;
+   padding: 10px;
+   
+    
+}
+#submitCreation {
+    padding: 10px;
+    margin: 10px;
+    transition: all 0.3s ease-in-out;
+}
+#submitCreation:hover {
+        cursor: pointer;
+    transform: scale(0.98);
+    border-radius: 14px;
+    border: none;
+background-color: rgb(246, 51, 64);
+}
+p {
+    margin-bottom: 0px;
+    padding: 3px;
+}

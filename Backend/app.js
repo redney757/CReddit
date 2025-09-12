@@ -6,6 +6,7 @@ import loginRouter from '../Backend/api/login.js'
 import registerRouter from '../Backend/api/register.js'
 import foraRouter from './api/fora.js'
 import accountRouter from './api/account.js'
+import solutionsRouter from './api/solutions.js'
 // Allow all CORS requests -- had issues getting backend and front end to take and send requests
 app.use(cors());
 
@@ -15,6 +16,7 @@ app.use("/login", loginRouter)
 app.use("/register", registerRouter)
 app.use("/fora", foraRouter)
 app.use("/account", accountRouter)
+app.use("/solutions", solutionsRouter)
 
 app.use((err, req, res, next) => {
   switch (err.code) {

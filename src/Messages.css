@@ -12,3 +12,10 @@ border: 1px solid rgba(255, 255, 255, 0.11);
 
 
 }
+#messagesSearch {
+  width: 40%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+  border-color: transparent;
+}

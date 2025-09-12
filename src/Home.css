@@ -17,11 +17,15 @@ body {
 #homeMainContent{
   width: 100vw;
   min-width: 725px;
-  background-color: rgba(255, 255, 255, 0);
   border-radius: 15px;
   margin: 15px;
+  background-color: rgba(85, 85, 85, 0);
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
 
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  padding: 10px;
+  position: relative;
+
 
 }
 
@@ -48,24 +52,15 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
-
+  
   max-height: calc(100vh - 85px);
   overflow-y: auto;
 }
 
 
-#createMainDiv {
-  width: 100vw;
-  min-width: 725px;
-  background-color: rgba(61, 61, 61, 0.295);
-  border-radius: 15px;
-  margin: 15px;
-  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-
-  }
 
 
-#createForum {
+#createForumButton {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -75,24 +70,3 @@ body {
   line-height: 40px;
 }
 
-#AccountMainDiv {
-  width: 100vw;
-  min-width: 725px;
-  background-color: rgba(151, 151, 151, 0.295);
-  border-radius: 15px;
-  margin: 10px;
-
-  }
-#profilePicture {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: rgb(246, 51, 63);
-}
-#accountHeader {
-  
-  width: 100%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}

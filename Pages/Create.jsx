@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import '../src/App.css'
 import Register from '../register/Register.jsx'
 import Login from '../login/Login.jsx'
 import { Route, Routes } from 'react-router'
@@ -10,11 +9,11 @@ import { AuthContext } from '../Context/Context.jsx';
 import HomeMainContent from '../Components/HomeMainContent.jsx'
 import Account from '../Pages/Account.jsx'
 import axios from 'axios'
+import '../src/Create.css'
 function Create() {
 
      const { createForum, user } = useContext(AuthContext);
-     
-    const handleForumCreation = async (formData) => {
+     const handleForumCreation = async (formData) => {
         
         const forum = {
             subject: formData.get("subject"),
@@ -23,23 +22,33 @@ function Create() {
             
         }
         await createForum(forum);
-        console.log("Form submitted");
+        const mainElement = document.querySelectorAll('.createMainDiv')
+            if (mainElement) {
+                mainElement.forEach(element => element.classList.remove("show") )
+            }
     }
 
     return (
-            <div id='createMainDiv'>
-
+            <div className="createMainDiv">
+                
 
         <h1> Create Forum</h1>
         <form id='createForum' action={handleForumCreation}>
-            <div><input className='createInput' type="text" placeholder='Subject' name='subject'required /></div>
-           <div> <input className='createInput' type='text' placeholder='Body' name='body' required/></div>
-           <button type='submit'>Create Forum</button>
-
+            <p>Subject</p>
+            <div><textarea className='createInput' type="text" placeholder='Subject' name='subject' maxLength={250}  required /></div>
+                <p>Body</p>
+            <div> <textarea className='createInput' type='text' placeholder='Body' name='body' maxLength={1150} required/></div>
+            <button id='submitCreation' type='submit'>Create</button>
+            
 
 
         </form>
-    
+        <button onClick={()=>{
+            const mainElement = document.querySelectorAll('.createMainDiv')
+            if (mainElement) {
+                mainElement.forEach(element => element.classList.remove("show") )
+            }
+        }}>Cancel</button>
         </div>
   )
 }

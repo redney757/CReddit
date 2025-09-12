@@ -1,0 +1,86 @@
+#AccountMainDiv {
+    width: 100vw;
+  min-width: 725px;
+  background-color: rgba(85, 85, 85, 0);
+  border-radius: 15px;
+  margin: 15px;
+text-align: left;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+backdrop-filter: blur(0.5px);
+border: 1px solid rgba(255, 255, 255, 0.11);
+display: flex;
+flex-direction: column;
+padding: 10px;
+align-items: center;
+position: relative;
+
+
+  }
+  #accountTitle {
+    margin-left: 10px;
+  }
+#profilePicture {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgb(246, 51, 63);
+}
+#accountHeader {
+width: 100%;
+background-color: rgba(85, 85, 85, 0);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  
+}
+#profileWrap {
+    margin: 15px;
+}
+#accountForaDiv {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+ 
+}
+#createdByTitle {
+    margin-top: 0px;
+}
+#forumPrefix {
+    margin: 0px;
+}
+#forumTitle {
+    display: flex;
+    align-items: center;
+}
+.accountForumItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#accountWrapper {
+    overflow: scroll;
+     background-color: rgba(85, 85, 85, 0);
+    border-bottom-left-radius: 15px;
+
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    margin-top: 8px;
+    padding: 15px;
+    width: 100%;
+    margin-right: 5px;
+    
+}
+
+#accountLike {
+    width: 100%;
+    overflow: scroll;
+     background-color: rgba(85, 85, 85, 0);
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    margin-top: 8px;
+    padding: 15px;
+    margin-left: 5px;
+}
