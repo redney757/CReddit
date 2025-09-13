@@ -14,7 +14,13 @@
 
 }
 #LoginBlock {
-    width: 100vw;
+    width: 100vw; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    align-items: center;
 }
 h1 {
   margin-top: 0px;
@@ -24,10 +30,32 @@ h1 {
   height: 50px;
   width: 300px;
   margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
-#form {
-min-width: 320px;}
+#submit:hover {
+          border-radius: 14px;
+    border: none;
+    transform: scale(0.95);
+background-color: rgb(246, 51, 64);
+}
 
+#form {
+min-width: 320px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+align-content: center;
+text-align: center;
+}
+.input {
+  padding: 20px;
+  align-items: center;
+  text-align: left;
+  align-content: center;
+  margin: 10px;
+}
 
 #registerLink {
     color: white;

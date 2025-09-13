@@ -7,16 +7,22 @@ color: black;
 border-radius: 15px;
 margin: 15px;
 box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-
+display: flex;
+flex-direction: column;
+position: relative;
+justify-content: space-between;
 }
 
 nav {
   display: flex;
   flex-direction: column;
+    margin-top: 30px;
+    height: 100%;
 }
 #navLink{
   padding: 15px;
   margin: 20px;
+  margin-top: 50px;
   text-decoration: none;
   color: black;
   border-radius: 8px;
@@ -43,4 +49,24 @@ nav {
   border-top-left-radius: 14px;
 
 
+}
+#logoutDiv {
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+#logoutButton {
+  border-radius: 14px;
+    border: none;
+    padding: 15px;
+    transition: all 0.3s ease-in-out;
+}
+#logoutButton:hover {
+          
+background-color: rgb(0, 0, 0);
+cursor: pointer;
+transform: scale(0.95);
 }

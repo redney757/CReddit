@@ -103,8 +103,10 @@ const AuthProvider = ({ children }) => {
             } else {
                 console.log(e);
             }
+        }
+    
     }
-}
+    
     return (
         <AuthContext.Provider value={{ user, token, commentReply, loginExistingUser, registerNewUser, createForum, setUser,  apiMessage }}>
             {children}

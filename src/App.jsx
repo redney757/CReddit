@@ -22,7 +22,9 @@ function App() {
       if (location.pathname !== "/login" && location.pathname !== "/register") {
       navigate("/login", { replace: true });
     }
+   
   }
+   
 }, [token, user, navigate, location.pathname]);
 
   return (
