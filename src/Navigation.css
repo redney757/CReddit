@@ -1,6 +1,6 @@
 #homeNav {
 width: 100vw;
-max-width: 375px;
+max-width: 300px;
 min-width: 275px;
 background-color: rgb(246, 51, 64);
 color: black;
@@ -23,7 +23,7 @@ nav {
   background-color: rgba(211, 211, 211, 0.856);
   transition: all ease-in-out 0.3s;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-
+  text-align: center;
 }
 #navLink:hover {
    background-color: black;

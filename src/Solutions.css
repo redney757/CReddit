@@ -14,61 +14,93 @@ position: relative;
 overflow: scroll;
 
 }
-#wrapper {
+.wrapper {
 top: 0;
 left: 0;
 position: sticky;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.11);
+    border: 0px solid rgba(255, 255, 255, 0.11);
   background-color: rgba(85, 85, 85, 0); 
   border-radius: 15px;
   text-align: left;
-  backdrop-filter: blur(18px);
+opacity: 0px;
   z-index: 99999;
-  -webkit-backdrop-filter: blur(4px);
+  width: 0px;
+max-height: 0px;
+  transition: all 1s ease-in-out;
+  
+}
+.wrapper.show {
+  max-height: 1500px;
+  transition: all 1s ease-in-out;
+  width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+
 }
 #selectCategoryButton {
- width: 250px;
+    margin: 5px;
+    border-radius: 12px;
+    width: 250px;
+    border-style: none;
+    cursor: pointer;
 }
 #selectCategoryButton p  {
   margin: 5px;
+  border-radius: 8px;
 }
 .categoriesDiv {
+   max-height: 0px;
   top: 0;
   left: 0;
-  position: absolute;
   opacity: 0;
-  pointer-events: none;
+  width: 0%;
   margin-top: 10px;
   margin-left: 30px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  transition: all 1s ease-in-out;
-  max-height: 0px;
-  will-change: max-height;
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+  
+  
 }
 .categoriesDiv.show{ 
-  max-height: 800px;
-  top: 0;
-  left: 0;
+  max-height: 1500px;
   opacity: 1;
-  width: 100%;
-  position: relative;
-  margin-top: 10px;
-  margin-left: 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   pointer-events: all;
-  transition: all 1s ease-in-out;
- 
+  transition: all 0.5s ease-in-out;
+  position: ab;
+  cursor: pointer;
+ width: max-content;
+ width: 100%;
 
 }
-/* .categoryList {
- 
-} */
+.categoryList {
+   width: 100%;
+   transition: all 0.2s ease-in-out;
+}
+.categoryList:hover {
+  transform: scale(0.95);
+}
+#categoryHeader {
+    border: 1px solid rgba(255, 255, 255, 0.11);
+  background-color: rgba(85, 85, 85, 0); 
+  border-radius: 15px;
+  padding: 10px;
+  margin-right: 50px;
+  max-width: 50%;
+}
 #solutionWrapper {
 top: 0;
 left: 0;
 right: 0;
 position: absolute;
 margin: 50px;
+margin-top: 60px;
+}
+#solution {
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background-color: rgba(85, 85, 85, 0); 
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
