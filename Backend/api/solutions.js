@@ -5,6 +5,5 @@ export default router;
 
 router.route("/").get(async (req, res, next)=> {
     const response = await getSolutions()
-    console.log(response)
     return res.status(200).send(response)
 })

@@ -6,11 +6,69 @@
   margin: 15px;
 text-align: left;
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-backdrop-filter: blur(0.5px);
 border: 1px solid rgba(255, 255, 255, 0.11);
 display: flex;
 flex-direction: column;
 padding: 10px;
-align-items: center;
+position: relative;
+overflow: scroll;
 
+}
+#wrapper {
+top: 0;
+left: 0;
+position: sticky;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+  background-color: rgba(85, 85, 85, 0); 
+  border-radius: 15px;
+  text-align: left;
+  backdrop-filter: blur(18px);
+  z-index: 99999;
+  -webkit-backdrop-filter: blur(4px);
+}
+#selectCategoryButton {
+ width: 250px;
+}
+#selectCategoryButton p  {
+  margin: 5px;
+}
+.categoriesDiv {
+  top: 0;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  margin-top: 10px;
+  margin-left: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: all 1s ease-in-out;
+  max-height: 0px;
+  will-change: max-height;
+}
+.categoriesDiv.show{ 
+  max-height: 800px;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  margin-left: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  pointer-events: all;
+  transition: all 1s ease-in-out;
+ 
+
+}
+.categoryList {
+ 
+}
+#solutionWrapper {
+top: 0;
+left: 0;
+right: 0;
+position: absolute;
+margin: 50px;
 }

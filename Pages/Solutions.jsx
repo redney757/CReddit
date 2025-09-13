@@ -13,21 +13,50 @@ import axios from 'axios'
 function Solutions() {
   const [solutions, setSolutions] = useState([])
   const [category, setCategory] = useState('')
+  const [categories, setCategories] = useState([])
    useEffect(  ()=> {
     const getSolutions = async () => {
       const response = await axios.get("http://localhost:8080/solutions")
       setSolutions(response.data)
-      console.log(response.data)
+       const alreadyThere = new Set();
+    const newArr = [];
+    for (let i = 0; i < solutions.length; i++) {
+      const item = solutions[i];
+      if(!alreadyThere.has(item.category)) {
+        alreadyThere.add(item.category)
+        newArr.push(item);
+      }
+    }
+    setCategories(newArr)
     }
     getSolutions()
-   },[])
+   },[categories])
 
+   
     return (
             <div id='solutionsMainDiv'>
-              {solutions.map(solution => <div key={solution.id}>
+              <div id='wrapper'>
+              <button id='selectCategoryButton' type='button' onClick={()=> {
+                const categoriesElement = document.querySelector('.categoriesDiv')
+                if (categoriesElement) {
+                  categoriesElement.classList.add('show')
+                }
+              }}>{category ? <p>{category}</p> : <p>Select a category</p>}</button>
+              <div className='categoriesDiv'>
+                {categories.map(category => <div className='categoryList' key={category.id} onClick={()=> setCategory(category.category)}>
+                  <h2>{category.category}</h2>
+                </div>)}
+              </div>
+              </div>
+              <div id='solutionWrapper'>
+
+              {solutions.map(solution => <div id='solution' key={solution.id}>
                 <h1>{solution.category}</h1>
+                <p>{solution.part}</p>
+                <p>{solution.repair_solution}</p>
+                <p>{solution.estimated_cost}</p>
               </div>)}
-                
+                </div>
 
 
 
