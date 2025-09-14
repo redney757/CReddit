@@ -10,19 +10,25 @@ box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
 display: flex;
 flex-direction: column;
 position: relative;
-justify-content: space-between;
+justify-content: space-between;overflow: hidden;
 }
 
 nav {
   display: flex;
   flex-direction: column;
-    margin-top: 30px;
     height: 100%;
+    min-height: 395px;
+    position: relative;
+    
+}
+#linkWrap {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 #navLink{
   padding: 15px;
   margin: 20px;
-  margin-top: 50px;
   text-decoration: none;
   color: black;
   border-radius: 8px;
