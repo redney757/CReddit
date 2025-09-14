@@ -27,15 +27,18 @@ const logoutUser = () => {
         
         
         <nav>
+          <div id='linkWrap'>
            <Link id='navLink' to="/account">My Account</Link>
            <Link id='navLink' to={`/user/${user.id}/messages`}>Messages</Link>
-           <Link id='navLink' to="/home">Forums</Link>
+           <Link id='navLink' to="/">Forums</Link>
            <Link id='navLink' to="/solutions">Solutions</Link>
-        </nav>
-        <div id='logoutDiv'>
+           </div>
+           <div id='logoutDiv'>
           <label id='userLabelfffffff'> Logged in as: {user.username}</label>
           <button id='logoutButton' onClick={()=> logoutUser()}>Logout</button>
         </div>
+        </nav>
+        
     </div>
     
     </>
