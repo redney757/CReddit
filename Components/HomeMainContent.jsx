@@ -15,7 +15,7 @@ function HomeMainContent() {
   const {isCreating, setIsCreating} = useState(false)
         useEffect(()=> {
             const getFora = async() => {
-                const response = await axios.get("http://localhost:8080/fora")
+                const response = await axios.get("https://retekprojects.com:8443/fora")
                 setFora(response.data)
                 
             }

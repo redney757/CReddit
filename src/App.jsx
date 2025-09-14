@@ -33,7 +33,7 @@ function App() {
       <>
     <HomeNavigation/>
       <Routes>
-        <Route path="/" element={<HomeMainContent />} />
+        <Route path="/home" element={<HomeMainContent />} />
         <Route path="/account" element={<Account/>} />
         <Route path="/forum/:id" element={<SingleForum/>}/>
         <Route path="/solutions" element={<Solutions/>}/>

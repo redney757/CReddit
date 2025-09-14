@@ -18,7 +18,7 @@ function Solutions() {
   const [filteredItems, setFilteredItems] = useState ([])
    useEffect(  ()=> {
     const getSolutions = async () => {
-      const response = await axios.get("http://localhost:8080/solutions")
+      const response = await axios.get("https://retekprojects.com:8443/solutions")
       setSolutions(response.data)
       const alreadyThere = new Set();
       const newArr = [];
