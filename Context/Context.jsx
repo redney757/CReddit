@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     const loginExistingUser = async (user)=> {
         try {
 
-            const response = await axios.post("http://localhost:8080/login", user, {
+            const response = await axios.post("https://retekprojects.com:8443/login", user, {
                 headers:{
                     "Content-Type": "application/json"
                 }
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("user", JSON.stringify(response.data.minimalInfo));
             if (response.status === 200) {
-                navigate("/");
+                navigate("/home");
             }
         }catch(e) {
             if (e.response && e.response.status === 401) {
@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
         try {
 
         
-            const response  = await axios.post(`http://localhost:8080/fora/forum/${forumId}/messages`, forumMessage, {
+            const response  = await axios.post(`https://retekprojects.com:8443/fora/forum/${forumId}/messages`, forumMessage, {
                 headers:{
                     "Content-Type": "application/json"
                 }
@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
     const createForum = async (forum)=> {
         try {
 
-            const response = await axios.post("http://localhost:8080/fora/forum/create", forum, {
+            const response = await axios.post("https://retekprojects.com:8443/fora/forum/create", forum, {
                 headers:{
                     "Content-Type": "application/json"
                 }
@@ -69,7 +69,7 @@ const AuthProvider = ({ children }) => {
             console.log(response);
             
             if (response.status === 201) {
-                navigate("/");
+                navigate("/home");
             }
         }catch(e) {
             if (e.response && e.response.status === 401) {
@@ -85,7 +85,7 @@ const AuthProvider = ({ children }) => {
     const registerNewUser = async (newUser) => {
     try {
         
-        const response = await axios.post("http://localhost:8080/register", newUser, {
+        const response = await axios.post("https://retekprojects.com:8443/register", newUser, {
             headers: {
                 "Content-Type": "application/json"
             }

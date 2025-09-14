@@ -9,7 +9,7 @@ function Account() {
   const date = new Date(user.created_at).toDateString();
   useEffect( () => {
     const getForaByOwner = async () => {
-      const response = await axios.get(`http://localhost:8080/account/${user.id}/fora`)
+      const response = await axios.get(`https://retekprojects.com:8443/account/${user.id}/fora`)
       setForaByOwner(response.data);
     }
     getForaByOwner()

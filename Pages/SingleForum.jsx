@@ -76,12 +76,12 @@ function SingleForum() {
     }
     useEffect(()=> {
             const getFora = async() => {
-                const response = await axios.get(`http://localhost:8080/fora/forum/${forumId.id}`)
+                const response = await axios.get(`https://retekprojects.com:8443/fora/forum/${forumId.id}`)
                 setForum(response.data.forum)
 
             }
             const getForumMessages = async() => {
-                const response = await axios.get(`http://localhost:8080/fora/forum/${forumId.id}/messages`)
+                const response = await axios.get(`https://retekprojects.com:8443/fora/forum/${forumId.id}/messages`)
                 setMessages(response.data)
                 setThread(createAMessageTree(response.data))
                 // const allChildren = []
