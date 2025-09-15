@@ -10,19 +10,16 @@ import foraRouter from './api/fora.js';
 import accountRouter from './api/account.js';
 import solutionsRouter from './api/solutions.js';
 
-/* 1) HARD CORS safety net – FIRST middleware */
+/* 1) FIRST middleware */
 app.use((req, res, next) => {
-  // Start wide open to prove it works; tighten to your origin after it’s working
-  res.setHeader('Access-Control-Allow-Origin', '*'); // later: 'https://retekprojects.com'
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  // res.setHeader('Access-Control-Allow-Credentials', 'true'); // only if you switch to cookies
-  if (req.method === 'OPTIONS') return res.sendStatus(204); // preflight OK
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
 
-/* 2) Optional: regular cors() (harmless to keep) */
 const corsForSite = cors({
   origin: 'https://retekprojects.com',
   methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
@@ -33,7 +30,6 @@ const corsForSite = cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* 3) PER-ROUTER CORS – applies to preflight + actual for each base path */
 app.use('/login',     corsForSite, loginRouter);
 app.use('/register',  corsForSite, registerRouter);
 app.use('/fora',      corsForSite, foraRouter);
