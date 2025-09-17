@@ -3,15 +3,12 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 const AuthContext = React.createContext();
-// function to act as a context provider for the entire front end application
+
 const AuthProvider = ({ children }) => {
-    //state to hold info about the user in local storage
     const [user, setUser] = useState(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null);
     const navigate = useNavigate();
-    //state to hold the user's token in the users local storage 
     const [token, setToken] = useState(localStorage.getItem("token") || null);
     const [apiMessage, setApiMessage] = useState("Success!");
-    //function to send a post request to backend for loging in the user and receive a token with minimal info about the user
     const loginExistingUser = async (user)=> {
         try {
 
@@ -39,7 +36,6 @@ const AuthProvider = ({ children }) => {
             }
         }
     }
-    //function to send a post request to the backend for posting a forum
     const commentReply = async (forumId, forumMessage) => {
         try {
 
@@ -62,7 +58,6 @@ const AuthProvider = ({ children }) => {
             }
         }
     }
-    //function to send a post request to the backend for creating a forum
     const createForum = async (forum)=> {
         try {
 
@@ -87,7 +82,6 @@ const AuthProvider = ({ children }) => {
             }
         }
     }
-    //function to send a post request to the backend to register a new user
     const registerNewUser = async (newUser) => {
     try {
         
@@ -114,7 +108,6 @@ const AuthProvider = ({ children }) => {
     }
     
     return (
-        //Auth text prover holds these variables for access to other parts of the application (AuthProvider is Wrapped around </App> in main.jsx)
         <AuthContext.Provider value={{ user, token, commentReply, loginExistingUser, registerNewUser, createForum, setUser,  apiMessage }}>
             {children}
         </AuthContext.Provider>

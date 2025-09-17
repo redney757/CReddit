@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Register from '../register/Register.jsx'
 import Login from '../login/Login.jsx'
 import { Route, Routes } from 'react-router'
@@ -8,16 +8,17 @@ import { useContext } from 'react'
 import { AuthContext } from '../Context/Context.jsx';
 import HomeMainContent from '../Components/HomeMainContent.jsx'
 import Account from '../Pages/Account.jsx'
+import Create from '../Pages/Create.jsx'
 import SingleForum from '../Pages/SingleForum.jsx'
 import Solutions from '../Pages/Solutions.jsx'
 import Messages from '../Pages/Messages.jsx'
 function App() {
-  const { token } = useContext(AuthContext); //retreives the token saved in context
-  const { user } = useContext(AuthContext); // retreives the user saved in context
+  const { token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token || !user) { // if there is no token and no user and the user is trying to access another route other than /login and /register, navigate them to login.
+    if (!token || !user) {
       if (location.pathname !== "/login" && location.pathname !== "/register") {
       navigate("/login", { replace: true });
     }
@@ -28,7 +29,6 @@ function App() {
 
   return (
     <>
-    {/* if there is a token and a user they will be allowed to access the associated outes and the element <HomeNavigation/> otherwise they will only be allowed to access the /register and /login */}
     {token && user ? (
       <>
     <HomeNavigation/>

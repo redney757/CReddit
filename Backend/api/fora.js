@@ -1,10 +1,12 @@
 import express from "express";
-import { getUserById} from "../Database/Queries/login.js"; 
+import { getUserById, getUserByUsernameOrEmail} from "../Database/Queries/login.js"; 
 const router = express.Router();
+import jwt from 'jsonwebtoken'
 import { createForum, getFora, getForum, createMainMessage, getForumMessages, createRelyMessage } from "../Database/Queries/fora.js";
 export default router;
+const secret = process.env.SECRET
 
-// route to get all fora
+
 router.route("/").get(async (req, res, next) => {
     try {
        const forums = await getFora()
@@ -16,7 +18,6 @@ router.route("/").get(async (req, res, next) => {
     }
     
 })
-//route to create a forum
 router.route("/forum/create").post(async (req, res) => {
     try {
         if(!req.body) {
@@ -45,7 +46,6 @@ router.route("/forum/create").post(async (req, res) => {
     }
     
 })
-//route to get a forum based on the ID in the url parameters
 router.route("/forum/:id").get(async (req, res, next) => {
     try {
         
@@ -58,7 +58,6 @@ router.route("/forum/:id").get(async (req, res, next) => {
     }
     
 })
-//route to get a forums messages based on the id in the url parameters
 router.route("/forum/:id/messages").get(async (req, res, next) => {
     try {
         
@@ -72,7 +71,6 @@ router.route("/forum/:id/messages").get(async (req, res, next) => {
     }
     
 })
-// route to handle message (sending) on a particular forum
 router.route("/forum/:id/messages").post(async (req, res, next) => {
     try {
         

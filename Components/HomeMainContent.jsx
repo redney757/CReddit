@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react'
+import Register from '../register/Register.jsx'
+import Login from '../login/Login.jsx'
+import { Route, Routes } from 'react-router'
 import { useNavigate } from 'react-router'
+import { useContext } from 'react'
+import { AuthContext } from '../Context/Context.jsx';
 import axios from 'axios'
 import Create from '../Pages/Create.jsx'
 function HomeMainContent() {
   const navigate = useNavigate()
-  const [selected, setSelected] = useState() // holds the value of the selected forum
-  const [searchTerm, setSearchTerm] = useState('') // holds the value of the search (input)
-  const [fora, setFora] = useState([]) // holds the value of all fora received in the use effect
+  const [selected, setSelected] = useState()
+  const [searchTerm, setSearchTerm] = useState('')
+  const [fora, setFora] = useState([])
   const {isCreating, setIsCreating} = useState(false)
         useEffect(()=> {
             const getFora = async() => {
@@ -15,9 +20,7 @@ function HomeMainContent() {
                 
             }
             getFora()
-        },[fora]) // continuously monitors the for state variable for changes to re-render the page if anything new were to be added
-
-        //variable created for filtering out al fora based on what the user searches
+        },[fora])
   const filteredFora = fora.filter(forum => forum.subject.toLowerCase().includes(searchTerm.toLowerCase()) || 
   forum.body.toLowerCase().includes(searchTerm.toLowerCase())
 )
@@ -40,16 +43,14 @@ function HomeMainContent() {
                         }
                         }}>+</button>
                         <div id='centerSearch'>
-                          {/* saves users input( value ) as the searchTerm in state */}
                         <input type='text' value={searchTerm} id='forumSearch' onChange={(e)=> {
                           setSearchTerm(e.target.value)
                         }} placeholder='Search..' title='Search for a forum'/>
                   </div>
               </div>
                 <div id='forumGrid'>
-                  {/* maps the filtered fora based on the searchTerm */}
                       {filteredFora.map(forum=><div onClick={()=>{setSelected(forum)
-                      // navigates the user when the click on the div to the url containing the mapped forum ID
+
                         navigate(`/forum/${forum.id}`)
                       
                       }} className='forumItem' key={forum.id}>

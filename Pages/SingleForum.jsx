@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react'
+import Register from '../register/Register.jsx'
+import Login from '../login/Login.jsx'
+import { Route, Routes } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useContext } from 'react'
 import { AuthContext } from '../Context/Context.jsx';
 import '../src/Home.css'
@@ -6,30 +10,29 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import '../src/SingleForum.css'
 function SingleForum() {
-    const [forum, setForum] = useState([]) //State created to hold information about the requested forum
-    const [messages, setMessages] = useState([]) //May possibly comment out later
-    const [thread, setThread] = useState([]) //State created to hold messages associated with a particular forum
-    const forumId = useParams() //Variable created to hold the paramater given/requested in the URL
-    const [replyMessage, setReplyMessage] = useState(false) 
+    const [forum, setForum] = useState([])
+    const [messages, setMessages] = useState([])
+    const [thread, setThread] = useState([])
+    const forumId = useParams()
+    const [replyMessage, setReplyMessage] = useState(false)
     const [parentMessageID, setParentMessageID] = useState(null)
     const [replyToUser, setReplyToUser] = useState(null)
-    const { user, token, commentReply} = useContext(AuthContext) //Variable access from context
+    const { user, token, commentReply} = useContext(AuthContext)
 
     function createAMessageTree(messageItems) {
-        const map = new Map() //Creating an empty collection of objects
-        messageItems.forEach(message => map.set(message.id, {...message, children: []})); //Taking the given data and for each item in that data it is creating a new object containing the corresponding message id and an empty children array to allow messages that contain a parent id to have children and grandchildren etc.
-        const rootMessageItems = [] //Creating an empty array for messages containing no parent id
+        const map = new Map()
+        messageItems.forEach(message => map.set(message.id, {...message, children: []}));
+        const rootMessageItems = []
         messageItems.forEach(message => {
-            const objects = map.get(message.id) //Variable that gets the message id from the map objects
-            if(message.parent_id && map.has(message.parent_id)) { //if the message contains a parent id and the mapped message object has a parent id
-                map.get(message.parent_id).children.push(objects) //we will get the mapped message object parent id and push that information to the children array associated with the parent message
-            } else { //otherwise set it as a root message
+            const objects = map.get(message.id)
+            if(message.parent_id && map.has(message.parent_id)) {
+                map.get(message.parent_id).children.push(objects)
+            } else {
                 rootMessageItems.push(objects)
             }
 
         })
-        //sort recursion function
-        const sortMessageTree = objects => { //sort root messages by date
+        const sortMessageTree = objects => {
             objects.sort((first, last) => (first.created_at || 0) > (last.created_at || 0) ? 1 : -1)
             objects.forEach(object => object.children && sortMessageTree(object.children))
         }
@@ -44,15 +47,13 @@ function SingleForum() {
 
 
     const handleCommentReply = async (formData) => {
-        const id = forumId.id //created a variable of id from the parameter given in the URL
-        //Creating an object for a message that does not contain a parent id
+        const id = forumId.id
         const forumProperties = {
             forum_id : forumId.id,
             author_id : user.id,
             body : formData.get("messageBody")
 
         }
-        //Creating an object for a message that does contain a parent id
         const forumPropertiesWParent = {
             forum_id : forumId.id,
             parent_id : Number(parentMessageID),
@@ -128,10 +129,8 @@ function SingleForum() {
             }
             return dateString
         }
-        //function takes an object and a depth which is defaulted to 0 (also a recursive function)
         function displayMessageObjects(object, depth = 0) {
             return (
-                //div properties that handle indentation
                 <div key={object.id} style={{marginBottom : 12, marginLeft: depth ? 16 : 0, borderLeft: depth ? '1px solid #ddd' : 'none', paddingLeft: depth ? 12 : 0}}>
                     <div id='flexDivForMessage' style={{display: 'flex', justifyContent: 'space-between', gap: 8}}>
                         <p style={{margin: 0}}>
@@ -139,20 +138,18 @@ function SingleForum() {
                                 {object.author_username ?? 'userDeleted'}
 
                             </span>
-                            {/* displays the object property.body */}
                             {object.body}
 
                         </p>
                         <button id='replyToButton' onClick={()=> {
-                                         setReplyMessage(true) //set reply message to true
-                                         setParentMessageID(object.id) //set parent message id to the object id of the message that was selected
-                                         setReplyToUser(object.author_username) //set reply to user to the object's associated author's username
+                                         setReplyMessage(true)
+                                         setParentMessageID(object.id)
+                                         setReplyToUser(object.author_username)
                                         document.getElementById('inputReply').focus()
 
                                          
                         }}>reply</button>
                     </div>
-                    {/* if object has children and children length is greater than 0, display the children and add 1 to the depth */}
                     {object.children && object.children.length > 0 && (
                         <div style={{marginTop: 8}}>
                             {object.children.map(child => displayMessageObjects(child, depth + 1))}

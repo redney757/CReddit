@@ -1,5 +1,5 @@
 import client from "../client.js";
-//Query to get all Fora created by a specific user
+
 export async function getForaByCreator(id) {
     const SQL = `
         SELECT

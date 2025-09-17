@@ -1,10 +1,10 @@
+import { useState } from 'react'
 import '../src/Register.css'
 import mainLogo from '../src/assets/CReddit_Logo.png'
 import { AuthContext } from '../Context/Context.jsx';
 import { useContext } from 'react';
 function Register() {
     const { registerNewUser } = useContext(AuthContext);
-    //handles the functionality of registering a user. Gets the formdata by the name and the value and sends it to backend.
     const handleRegistration = async (formData) => {
         
         const newUser = {
