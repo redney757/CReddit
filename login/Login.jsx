@@ -1,10 +1,11 @@
-import { useState } from 'react'
 import mainLogo from '../src/assets/CReddit_Logo.png'
 import { useContext } from 'react';
 import '../src/Login.css'
 import { AuthContext } from '../Context/Context.jsx';
 function Login() {
-    const { loginExistingUser } = useContext(AuthContext);
+
+    const { loginExistingUser } = useContext(AuthContext); //accesses the loginExistingUser function from context
+    //function that is ran when the user submits their form. Gathers the information from the form and sends it in the request body to the backend
     const handleLogin = async (formData) => {
         
         const existingUser = {

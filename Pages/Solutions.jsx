@@ -1,28 +1,20 @@
 import { useState, useEffect } from 'react'
 import '../src/Solutions.css'
-import Register from '../register/Register.jsx'
-import Login from '../login/Login.jsx'
-import { Route, Routes } from 'react-router'
-import HomeNavigation from '../Components/HomeNavigation.jsx'
-import { useNavigate } from 'react-router'
-import { useContext } from 'react'
-import { AuthContext } from '../Context/Context.jsx';
-import HomeMainContent from '../Components/HomeMainContent.jsx'
-import Account from '../Pages/Account.jsx'
 import axios from 'axios'
 function Solutions() {
-  const [solutions, setSolutions] = useState([])
-  const [category, setCategory] = useState('')
-  const [categories, setCategories] = useState([])
-  const [elementStatus, setElementStatus]= useState(false)
-  const [filteredItems, setFilteredItems] = useState ([])
+  const [solutions, setSolutions] = useState([]) // state for storing solutions received in the response of the use effect
+  const [category, setCategory] = useState('') // state for storing the category selected by the user
+  const [categories, setCategories] = useState([]) // state for storing a list of categories from the response.data
+  const [elementStatus, setElementStatus]= useState(false) //state for monitoring the show hide property of an element
+  const [filteredItems, setFilteredItems] = useState ([]) // state for displaying a list of filtered items based on the category chosen by the user
    useEffect(  ()=> {
     const getSolutions = async () => {
       const response = await axios.get("https://retekprojects.com:8443/solutions")
       setSolutions(response.data)
+      
       const alreadyThere = new Set();
       const newArr = [];
-      for (let i = 0; i < solutions.length; i++) {
+      for (let i = 0; i < solutions.length; i++) { // goes through each of the solutions and gets the item.category, disregards any duplicates
       const item = solutions[i];
         if(!alreadyThere.has(item.category)) {
           alreadyThere.add(item.category)
@@ -30,9 +22,9 @@ function Solutions() {
         }
       }
       setCategories(newArr)
-      if (!category) {
+      if (!category) {// if no category then do nothing
         return
-      } else {
+      } else { // if category is set then show only the solutions pertaining to that category, pushing the item into a filtered array
         const newFilteredArray = []
         for (let i = 0; i < solutions.length; i++) {
           const item = solutions[i]
