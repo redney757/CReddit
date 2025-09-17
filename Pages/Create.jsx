@@ -1,20 +1,12 @@
-import { useState, useEffect } from 'react'
-import Register from '../register/Register.jsx'
-import Login from '../login/Login.jsx'
-import { Route, Routes } from 'react-router'
-import HomeNavigation from '../Components/HomeNavigation.jsx'
-import { useNavigate } from 'react-router'
 import { useContext } from 'react'
 import { AuthContext } from '../Context/Context.jsx';
-import HomeMainContent from '../Components/HomeMainContent.jsx'
-import Account from '../Pages/Account.jsx'
-import axios from 'axios'
 import '../src/Create.css'
 function Create() {
 
-     const { createForum, user } = useContext(AuthContext);
+     const { createForum, user } = useContext(AuthContext); // Accesses 2 variables from context
+     // function to create a forum with the info from the form data the user submitted
      const handleForumCreation = async (formData) => {
-        
+        //set these parameters for the request body
         const forum = {
             subject: formData.get("subject"),
             body : formData.get("body"),

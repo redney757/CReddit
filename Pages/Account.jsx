@@ -4,16 +4,17 @@ import profilePicture from '../src/assets/userProfile.png'
 import { AuthContext } from '../Context/Context'
 import axios from 'axios';
 function Account() {
-  const { user } = useContext(AuthContext);
-  const [ foraByOwner, setForaByOwner] = useState([]);
-  const date = new Date(user.created_at).toDateString();
+  const { user } = useContext(AuthContext); // Accesses the user variable from Context
+  const [ foraByOwner, setForaByOwner] = useState([]); // state created to hold the fora created by the user
+
+  const date = new Date(user.created_at).toDateString(); //accesses the saved user object from state (is saved in local storage) and uses the created_at parameter and converts it to Date String
   useEffect( () => {
     const getForaByOwner = async () => {
       const response = await axios.get(`https://retekprojects.com:8443/account/${user.id}/fora`)
       setForaByOwner(response.data);
     }
     getForaByOwner()
-  }, [])
+  }, []) // user info doesnt constantly change so no need to monitor until a change is made
 
   return (
     <>

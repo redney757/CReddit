@@ -1,5 +1,6 @@
 import client from "../client.js";
-import bcrypt from 'bcrypt'
+
+// Query to get the all of the forums / joins the users table with the forums table and associates the users ID from the users table with the created_by column in the forums table and orders them by the time they were created.
 export async function getFora() {
     const SQL = `
         SELECT
@@ -17,7 +18,7 @@ export async function getFora() {
     const {rows : forums } = await client.query(SQL)
     return forums
 }
-
+//Query to create a forum
 export async function createForum({subject, body, id}) {
     const SQL = `
     INSERT INTO forums
@@ -30,6 +31,7 @@ export async function createForum({subject, body, id}) {
     return rows[0]
 
 }
+//query to get the forum by the ID that was requested
 export async function getForum(id) {
     const SQL = `SELECT
             f.id,
@@ -46,6 +48,8 @@ export async function getForum(id) {
     const response = await client.query(SQL, [id])
     return response.rows[0]
 }
+
+//Query to get the forum messages by the ID of the forum that was requested
 export async function getForumMessages(id) {
     const SQL = `SELECT 
         f.id,
@@ -64,7 +68,7 @@ export async function getForumMessages(id) {
     const {rows:response} = await client.query(SQL, [id])
     return response
 }
-
+//Query to create a forum message(contains no parent ID)
 export async function createMainMessage(forum_id, author_id, body) {
     const SQL = `
     INSERT into forum_messages
@@ -76,6 +80,7 @@ export async function createMainMessage(forum_id, author_id, body) {
     const response = await client.query(SQL, [forum_id, author_id, body])
     return response.rows[0]
 }
+//Query to create a reply message (contains parent ID)
 export async function createRelyMessage(forum_id, parent_id, author_id, body) {
     const SQL = `
     INSERT into forum_messages
